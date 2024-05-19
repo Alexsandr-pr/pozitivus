@@ -1,0 +1,48 @@
+
+
+
+
+// data-spoller-trigger дата атрибут блоку на котором должен идти клик
+// data-spollers родительский блок, оболочка меню аккордеон
+// data-spollers-content  контент спойлера
+
+
+[data-spollers-content] {
+	transition: all 0.3s ease 0s;
+	max-height: 0;
+	overflow: hidden;
+	box-sizing:content-box;
+	padding: 0px 51px;
+	@media(max-width:991.98px){
+		padding: 0px 20px;
+	}
+
+}
+[data-spollers].active {
+	[data-spollers-content] {
+		padding: 30px 50px 41px 50px;
+		overflow: "";
+		@media(max-width:991.98px){
+			padding: 20px;
+		}
+	}
+	background-color: #B9FF66;
+	.tabs__button {
+		padding: 41px 50px 30px 50px;
+		border-radius:45px 45px 0px 0px;
+		border-bottom: 1px solid #000;
+		@media(max-width:991.98px){
+			padding: 20px 20px ;
+			border-radius:20px 20px 0px 0px;
+		}
+	}
+}
+
+.tabs__button {
+	padding: 41px 50px;
+	border-radius:45px ;
+	@media(max-width:991.98px){
+		padding: 20px;
+		border-radius:20px;
+	}
+}
