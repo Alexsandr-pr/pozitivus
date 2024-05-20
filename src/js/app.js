@@ -41,25 +41,39 @@ const swiper = new Swiper(".case__swiper", {
 
 })
 const swiper2 = new Swiper(".slider__swiper", {
-    
-    
+    navigation: {
+		nextEl: '.navigation-swiper-right',
+		prevEl: '.navigation-swiper-left'
+	},
 
+    initialSlide: 1,
+    loop:true,
     breakpoints: {
         120.98: {
             spaceBetween: 20,
             slidesPerView: 1,
         },
-        767.98: {
+        667.98: {
             spaceBetween: 30,
-            slidesPerView: 1,
-        },
-        991.98: {
+            slidesPerView: 1.2,
             centeredSlides: true,
-            slidesPerView: 2,
+        },
+        800: {
+            centeredSlides: true,
+            slidesPerView: 1.5,
+            spaceBetween: 30,
+        },
+        1280.98: {
+            centeredSlides: true,
+            slidesPerView: 1.8,
             spaceBetween: 50,
         }
-    }
-
+    },
+    pagination: {
+		el: '.swiper-pagination',
+		type: 'bullets',
+		clickable: true
+	}
 
 })
 
@@ -81,3 +95,28 @@ window.addEventListener("resize", () => {
 
 
 
+const elementToArray = document.querySelectorAll("[data-go]");
+
+
+elementToArray.forEach(item => {
+    item.addEventListener("click", (e) => {
+        console.log(item)
+        e.preventDefault();
+        const element = item.dataset.go;
+        const height = offset(document.querySelector(element)).top;
+
+        window.scrollTo({
+            top: height  ,
+            behavior: "smooth",
+        });
+    })
+})
+
+
+
+function offset(el) {
+    const rect = el.getBoundingClientRect(),
+    scrollLeft = window.scrollX || document.documentElement.scrollLeft,
+    scrollTop = window.scrollY || document.documentElement.scrollTop;
+    return {top: rect.top + scrollTop, left: rect.left + scrollLeft};
+}
